@@ -69,7 +69,7 @@ function getPitch(bufferData){
 }
 
 // Testing pitch acquisition
-/*
+
 client.on("ready", async () => {
 	console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`)
 	client.user.setActivity(`with your emotions`)
@@ -108,4 +108,4 @@ client.on("message", async message => {
 	const cmd = client.commands.resolveCommand(command)
 	cmd.Execute(message, args).catch(console.error)
 });
-client.login(config.token);*/
+client.login(config.token);
