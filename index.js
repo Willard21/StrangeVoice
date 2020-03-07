@@ -1,11 +1,15 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
+const commands = new (require("./Commands/handler"))(`${__dirname}/Commands/Commands`)
 
-client.on("ready", () => {
-	console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
-	client.user.setActivity(`Serving ${client.guilds.size} servers`);
-});
+client.on("ready", async () => {
+	console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`)
+	client.user.setActivity(`Serving ${client.guilds.size} servers`)
+
+	await commands.loadCommands()
+	client.commands = commands
+})
 
 client.on("guildCreate", guild => {
 	console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
@@ -22,26 +26,19 @@ client.on("message", async message => {
 	if(message.content.indexOf(config.prefix) !== 0) return;
 	
 	const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-	const command = args.shift().toLowerCase();
-	
-	if(command === "ping") {
-		const m = await message.channel.send("Ping?");
-		m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms.`);
+	let command = args.shift().toLowerCase();
+
+	//Resolve alias to full command name
+	if(client.commands.Commands.Aliases[command] !== undefined){
+		command = client.commands.Commands.Aliases[command]
 	}
-	
-	if(command === "say") {
-		const sayMessage = args.join(" ");
-		message.delete().catch(O_o=>{});
-		message.channel.send(sayMessage);
+	//See if command exists
+	if(!client.commands.Commands.All.includes(command)){
+		return
 	}
 
-	if(command === "purge") {
-		const deleteCount = parseInt(args[0], 10);
-		if(!deleteCount || deleteCount < 2 || deleteCount > 100)
-			return message.reply("Please provide a number between 2 and 100 for the number of messages to delete");
-		const fetched = await message.channel.fetchMessages({limit: deleteCount});
-		message.channel.bulkDelete(fetched)
-			.catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
-	}
+	//Execute the command
+	const cmd = client.commands.resolveCommand(command)
+	cmd.Execute(message, args).catch(error => message.sendError(error))
 });
 client.login(config.token);

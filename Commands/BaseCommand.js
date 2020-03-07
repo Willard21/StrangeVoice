@@ -1,5 +1,7 @@
 class Command {
-    constructor() {
-        
+    constructor(options) {
+        this.Metadata = options
     }
 }
+
+module.exports = Command
