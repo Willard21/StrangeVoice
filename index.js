@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-//const config = require("./config.json");
+const config = require("./config.json");
 const commands = new (require("./Commands/handler"))(`${__dirname}/Commands/Commands`)
 const fs = require("fs");
 let songs = require("./song_list.json")
@@ -52,8 +52,8 @@ app.post("/mmm", function(req, res){
 		let pitch = getKTP(freqArray);
 		console.log("LowKey:" + pitch[0]);
 		console.log("highKey:" + pitch[1]);
-		res.send("{'LowKey':" + pitch[0] + ","\
-				   "'HighKey':" + pitch[1] + ","\
+		res.send("{'LowKey':" + pitch[0] + ",",
+				   "'HighKey':" + pitch[1] + ",",
 				   "'songs:'");
 	}
 })
@@ -95,7 +95,7 @@ function getPitch(bufferData){
 }
 
 // Testing pitch acquisition
-
+/*
 client.on("ready", async () => {
 	console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`)
 	client.user.setActivity(`with your emotions`)
@@ -134,4 +134,4 @@ client.on("message", async message => {
 	const cmd = client.commands.resolveCommand(command)
 	cmd.Execute(message, args).catch(console.error)
 });
-client.login(config.token);
+client.login(config.token);*/
