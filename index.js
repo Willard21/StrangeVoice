@@ -5,6 +5,29 @@ const commands = new (require("./Commands/handler"))(`${__dirname}/Commands/Comm
 const fs = require("fs");
 const WavDecoder = require("wav-decoder");
 const Pitchfinder = require("pitchfinder");
+var pcm = require('pcm-util');
+
+const http = require('http');
+var express = require("express");
+var app = express();
+app.use(express.static('public'));
+
+console.log("Creating a server");
+
+var server = app.listen(8080, function(){
+    var port = server.address().port;
+    console.log("Server started at http://localhost:%s", port);
+});
+
+app.get("/mmm", function(req, res){
+	res.end("HI");
+})
+function generateSongs(){
+	let lowTone = getPitch(/* File location */);
+	let highTone = getPitch(/* File location */);
+	if(highTone < lowTone) return null;
+	let song = getSongs(lowTone, highTone);
+}	
 
 function getPitch(filePath){
 	const detectPitch = new Pitchfinder.DynamicWavelet();
@@ -18,12 +41,11 @@ function getPitch(filePath){
 // Testing pitch acquisition
 console.log("Classifying audio");
 console.log(getPitch("440Hz_44100Hz_16bit_05sec.wav"));
-
+/*
 client.on("ready", async () => {
 	console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`)
 	client.user.setActivity(`with your emotions`)
 	if (!fs.existsSync("./recordings/")) fs.mkdirSync("./recordings/")
-
 	await commands.loadCommands()
 	client.commands = commands
 })
@@ -58,4 +80,4 @@ client.on("message", async message => {
 	const cmd = client.commands.resolveCommand(command)
 	cmd.Execute(message, args).catch(console.error)
 });
-client.login(config.token);
+client.login(config.token);*/
