@@ -2,6 +2,9 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
 const commands = new (require("./Commands/handler"))(`${__dirname}/Commands/Commands`)
+const fs = require("fs");
+const WavDecoder = require("wav-decoder");
+const Pitchfinder = require("pitchfinder");
 
 client.on("ready", async () => {
 	console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`)
