@@ -85,9 +85,9 @@
 				//start the recording process 
 				rec.record()
 				console.log("Recording started");
-				window.setTimeOut(stopRecording(rec), 3000);
+				window.setTimeout(stopRecording, 3000, rec)
 			}).catch(function(err) {
-
+				console.log(err)
 			});
 		}
 		
