@@ -44,7 +44,11 @@
 			};
 			var fd = new FormData();
 			fd.append("audio1", audios[0], "lowKey");
-			fd.append("audio2", audios[1], "highKey");
+			fd.append("audio2", audios[1], "lowKey");
+			fd.append("audio3", audios[2], "lowKey");
+			fd.append("audio4", audios[3], "highKey");
+			fd.append("audio5", audios[4], "highKey");
+			fd.append("audio6", audios[5], "highKey");
 			console.log("Data to sent:");
 			xhr.open("POST", "/mmm", true);
 			xhr.send(fd);
@@ -56,7 +60,7 @@
 		}
 		
 		function recordHighPitch() {
-			currentRecording = 1;
+			currentRecording = 3;
 			startRecording();
 		}
 		
@@ -85,9 +89,13 @@
 				//start the recording process 
 				rec.record()
 				console.log("Recording started");
+<<<<<<< HEAD
 				window.setTimeout(stopRecording, 1000, rec);
+=======
+				window.setTimeout(stopRecording, 1000, rec)
+>>>>>>> 31682257acb00a9b82b11bc0e70ce660f25f7607
 			}).catch(function(err) {
-
+				console.log(err)
 			});
 		}
 		
@@ -107,8 +115,11 @@
 		}
 		function saveAudio(blob) {
 			if(currentRecording != -1){
-				audios[currentRecording] = blob;
-				console.log("Saving: " + audios[currentRecording]);
+				audios[currentRecording++] = blob;
+				console.log("Saving: " + currentRecording);
+				if (currentRecording % 3) {
+					startRecording()
+				}
 			}
 		}
 		
