@@ -46,6 +46,7 @@ app.post("/mmm", function(req, res){
 	if(req.files){
 		console.log("We got the files!!");
 		let freqArray = Object.values(req.files);
+		console.log(freqArray)
 		let pitch = getKTP(freqArray);
 		console.log("LowKey:" + pitch[0]);
 		console.log("highKey:" + pitch[1]);

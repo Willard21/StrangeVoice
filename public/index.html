@@ -49,7 +49,7 @@
 		var gumStream;
 		//stream from getUserMedia() 
 		var rec;
-		var audios = [0, 0];
+		var audios = [];
 		//Recorder.js object 
 		var input;
 		var currentRecording = -1;
@@ -66,6 +66,7 @@
 			xhr.onload = function(e) {
 				if (this.readyState === 4) {
 					let data = JSON.parse(this.responseText);
+					console.log(data)
 					let container = document.getElementById("data");
 					let display = "";
 					for(let i = 0; i < data.songs.length; i++){
@@ -73,14 +74,14 @@
 						display +=	"<h2>" + data.songs[i].song + "</h2>";
 						display +=	"<h3>" + data.songs[i].artist + "</h3>";
 						display +=  "<p> Ln:" + data.song["lowest frequency"];
-						display += 	" Hn:" +  data.song["highest frequency"] +  "</p>";
+						display += 	" Hn:" +  data.song["highest frequency"] +  "</p></div";
 					}
 					container.innerHTML = display;
 				}
 			};
 			var fd = new FormData();
 			audios.forEach((audio, i) => fd.append(`audio${i + 1}`, audio, "pitch"))
-			console.log("Data to sent:");
+			console.log("Data to be sent:");
 			xhr.open("POST", "/mmm", true);
 			xhr.send(fd);
 		});
@@ -142,7 +143,7 @@
 			//reset button just in case the recording is stopped while paused 
 			//tell the recorder to stop the recording 
 			rec.stop(); //stop microphone access 
-			gumStream.getAudioTracks()[0].stop();
+			
 			//create the wav blob and pass it on to createDownloadLink 
 			rec.exportWAV(saveAudio);
 		}
@@ -152,7 +153,7 @@
 				console.log("Saving: " + currentRecording);
 				if (currentRecording % count) {
 					startRecording()
-				}
+				} else gumStream.getAudioTracks()[0].stop();
 			}
 		}
 

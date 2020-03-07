@@ -4,127 +4,127 @@
     "artist": "David Bowie",
     "lowest note": "A3",
     "highest note": "B5",
-    "low frequency": "220.00",
-    "high frequency": "850.00"
+    "lowest frequency": "220.00",
+    "highest frequency": "850.00"
   },
   {
     "song": "In My Feelings",
     "artist": "Drake",
     "lowest note": "G#3",
     "highest note": "C#5",
-    "low frequency": "207.65",
-    "high frequency": "554.37"
+    "lowest frequency": "207.65",
+    "highest frequency": "554.37"
   },
   {
     "song": "Heroes",
     "artist": "David Bowie",
     "lowest note": "B3",
     "highest note": "G5",
-    "low frequency": "246.94",
-    "high frequency": "783.99"
+    "lowest frequency": "246.94",
+    "highest frequency": "783.99"
   },
   {
     "song": "Lazarus",
     "artist": "David Bowie",
     "lowest note": "E4",
     "highest note": "F5",
-    "low frequency": "329.63",
-    "high frequency": "698.46"
+    "lowest frequency": "329.63",
+    "highest frequency": "698.46"
   },
   {
     "song": "Tears in Heaven",
     "artist": "Eric Clapton",
     "lowest note": "E4",
     "highest note": "E5",
-    "low frequency": "329.63",
-    "high frequency": "659.25"
+    "lowest frequency": "329.63",
+    "highest frequency": "659.25"
   },
   {
     "song": "Nothing Else Matters",
     "artist": "Metallica",
     "lowest note": "D4",
     "highest note": "C5",
-    "low frequency": "293.66",
-    "high frequency": "523.25"
+    "lowest frequency": "293.66",
+    "highest frequency": "523.25"
   },
   {
     "song": "I Wanna Be Yours",
     "artist": "Arctic Monkeys",
     "lowest note": "A#3",
     "highest note": "A#4",
-    "low frequency": "233.08",
-    "high frequency": "466.16"
+    "lowest frequency": "233.08",
+    "highest frequency": "466.16"
   },
   {
     "song": "Wish You Were Here",
     "artist": "Pink Floyd",
     "lowest note": "D4",
     "highest note": "E5",
-    "low frequency": "293.66",
-    "high frequency": "659.25"
+    "lowest frequency": "293.66",
+    "highest frequency": "659.25"
   },
   {
     "song": "Way Down We Go",
     "artist": "Kaleo",
     "lowest note": "A#3",
     "highest note": "F6",
-    "low frequency": "233.08",
-    "high frequency": "1396.91"
+    "lowest frequency": "233.08",
+    "highest frequency": "1396.91"
   },
   {
     "song": "A Long December",
     "artist": "Counting Crows",
     "lowest note": "D4",
     "highest note": "D5",
-    "low frequency": "293.66",
-    "high frequency": "587.33"
+    "lowest frequency": "293.66",
+    "highest frequency": "587.33"
   },
   {
     "song": "Pour It Up",
     "artist": "Rihanna",
     "lowest note": "F#3",
     "highest note": "A4",
-    "low frequency": "185.00",
-    "high frequency": "440.00"
+    "lowest frequency": "185.00",
+    "highest frequency": "440.00"
   },
   {
     "song": "Green Light",
     "artist": "Lorde",
     "lowest note": "D3",
     "highest note": "G4",
-    "low frequency": "146.83",
-    "high frequency": "392.00"
+    "lowest frequency": "146.83",
+    "highest frequency": "392.00"
   },
   {
     "song": "Sound and Vision",
     "artist": "David Bowie",
     "lowest note": "E3",
     "highest note": "G5",
-    "low frequency": "164.81",
-    "high frequency": "783.99"
+    "lowest frequency": "164.81",
+    "highest frequency": "783.99"
   },
   {
     "song": "Rehab",
     "artist": "Amy Winehouse",
     "lowest note": "G3",
     "highest note": "F4",
-    "low frequency": "196.00",
-    "high frequency": "349.23"
+    "lowest frequency": "196.00",
+    "highest frequency": "349.23"
   },
   {
     "song": "Malibu",
     "artist": "Miley Cyrus",
     "lowest note": "D#3",
     "highest note": "F4",
-    "low frequency": "155.56",
-    "high frequency": "349.23"
+    "lowest frequency": "155.56",
+    "highest frequency": "349.23"
   },
   {
     "song": "Don't Be So Shy",
     "artist": "Imany feat. Filatov and Karas",
     "lowest note": "E3",
     "highest note": "E4",
-    "low frequency": "164.81",
-    "high frequency": "329.633"
+    "lowest frequency": "164.81",
+    "highest frequency": "329.633"
   }
 ]
