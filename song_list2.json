@@ -1,0 +1,26 @@
+[
+  {
+    "song": "Natural",
+    "artist": "Imagine Dragons",
+    "lowest note": "A3",
+    "highest note": "C#6"
+  },
+  {
+    "song": "Promises",
+    "artist": "Calvin Harris feat. Sam Smith",
+    "lowest note": "D4",
+    "highest note": "B5"
+  },
+  {
+    "song": "Shotgun",
+    "artist": "George Ezra",
+    "lowest note": "F3",
+    "highest note": "D5"
+  },
+  {
+    "song": "Be Alright",
+    "artist": "Dean Lewis",
+    "lowest note": "C#4",
+    "highest note": "F#5"
+  }
+]
