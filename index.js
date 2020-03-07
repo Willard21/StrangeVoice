@@ -12,18 +12,17 @@ fs.readFile("song_list.json", (err, data) => {
 
 function getSongs(lf,hf){
 	var lowf, highf;
-	for(i = 0; i < songs.length; i++)
-	{
+	var songList = new Array();
+	for(i = 0; i < songs.length; i++){
 		lowf = songs[i]["low frequency"];
 		highf = songs[i]["high frequency"];
-		if(lowf >= lf && highf <= hf)
-		{
-			console.log(songs[i]);
+		if(lowf >= lf && highf <= hf){
+			songList.push(songs[i]);
 		}
 	}
+	return songList;
 }
 
-getSongs(100,600);
 
 
 const WavDecoder = require("wav-decoder");
@@ -52,9 +51,10 @@ app.post("/mmm", function(req, res){
 		let pitch = getKTP(freqArray);
 		console.log("LowKey:" + pitch[0]);
 		console.log("highKey:" + pitch[1]);
-		res.send("{'LowKey':" + pitch[0] + ","\
-				   "'HighKey':" + pitch[1] + ","\
-				   "'songs:'");
+		let resData = "{'LowKey':" + pitch[0] + ",";
+			resData += "'HighKey':" + pitch[1] + ",";
+			resData += "'songs:'" + JSON.stringify(getSongs(pitch[0], pitch[1])) + "};";
+		res.send(resData);
 	}
 })
 
@@ -78,12 +78,6 @@ function getKTP(freqArray){
 	}
 	return [lowPitch, highPitch];
 }
-function generateSongs(){
-	let lowTone = getPitch(/* File location */);
-	let highTone = getPitch(/* File location */);
-	if(highTone < lowTone) return null;
-	let song = getSongs(lowTone, highTone);
-}	
 
 function getPitch(bufferData){
 	const detectPitch = new Pitchfinder.DynamicWavelet();
@@ -95,7 +89,7 @@ function getPitch(bufferData){
 }
 
 // Testing pitch acquisition
-
+/*
 client.on("ready", async () => {
 	console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`)
 	client.user.setActivity(`with your emotions`)
@@ -134,4 +128,4 @@ client.on("message", async message => {
 	const cmd = client.commands.resolveCommand(command)
 	cmd.Execute(message, args).catch(console.error)
 });
-client.login(config.token);
+client.login(config.token);*/
