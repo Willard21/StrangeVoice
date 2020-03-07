@@ -102,6 +102,9 @@
 
 		function recordPitch() {
 			currentRecording = 0;
+			record.setAttribute("style", "background-color: red");
+			record.disabled = true
+			classify.disabled = true
 			startRecording();
 		}
 		
@@ -167,6 +170,10 @@
 				console.log("Saving: " + currentRecording);
 				if (currentRecording % count) {
 					startRecording()
+				} else {
+					record.setAttribute("style", "background-color: white");
+					record.disabled = false
+					classify.disabled = false
 				}
 			}
 		}
