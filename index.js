@@ -21,10 +21,40 @@ getSongs(200,500);
 
 const WavDecoder = require("wav-decoder");
 const Pitchfinder = require("pitchfinder");
+const upload = require("express-fileupload");
+const bodyParser = require('body-parser');
 
-function getPitch(filePath){
+const http = require('http');
+var express = require("express");
+var app = express();
+app.use(express.static('public'));
+app.use(upload());
+app.use(bodyParser.urlencoded({extended: false}));
+
+console.log("Creating a server");
+
+var server = app.listen(8080, function(){
+    var port = server.address().port;
+    console.log("Server started at http://localhost:%s", port);
+});
+
+app.post("/mmm", function(req, res){
+	if(req.files){
+		console.log("We got the files!!");
+		let audio = req.files.audio;
+		console.log(getPitch(req.files.audio.data));
+	}
+})
+function generateSongs(){
+	let lowTone = getPitch(/* File location */);
+	let highTone = getPitch(/* File location */);
+	if(highTone < lowTone) return null;
+	let song = getSongs(lowTone, highTone);
+}	
+
+function getPitch(bufferData){
 	const detectPitch = new Pitchfinder.DynamicWavelet();
-	const buffer = fs.readFileSync(filePath); //Conversion from pcm to wav required
+	const buffer = bufferData; //Conversion from pcm to wav required
 	const decoded = WavDecoder.decode.sync(buffer);
 	const float32Array = decoded.channelData[0];
 	console.log("Detection Process");
@@ -32,14 +62,11 @@ function getPitch(filePath){
 }
 
 // Testing pitch acquisition
-console.log("Classifying audio");
-console.log(getPitch("440Hz_44100Hz_16bit_05sec.wav"));
-
+/*
 client.on("ready", async () => {
 	console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`)
 	client.user.setActivity(`with your emotions`)
 	if (!fs.existsSync("./recordings/")) fs.mkdirSync("./recordings/")
-
 	await commands.loadCommands()
 	client.commands = commands
 })
@@ -74,4 +101,4 @@ client.on("message", async message => {
 	const cmd = client.commands.resolveCommand(command)
 	cmd.Execute(message, args).catch(console.error)
 });
-client.login(config.token);
+client.login(config.token);*/
