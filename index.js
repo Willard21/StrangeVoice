@@ -47,7 +47,7 @@ var server = app.listen(8080, function(){
 
 app.post("/mmm", function(req, res){
 	if(req.files){
-		console.log("We got the files!!");
+		console.log("We got the files!!", Object.keys(req.files));
 		let lowKey = req.files.audio1;
 		let highKey = req.files.audio2;
 		console.log(lowKey);
