@@ -1,0 +1,98 @@
+[
+  {
+    "song": "Rock 'n' Roll Suicide",
+    "artist": "David Bowie",
+    "lowest note": "A3",
+    "highest note": "B5"
+  },
+  {
+    "song": "In My Feelings",
+    "artist": "Drake",
+    "lowest note": "Ab3",
+    "highest note": "Db5"
+  },
+  {
+    "song": "Heroes",
+    "artist": "David Bowie",
+    "lowest note": "B3",
+    "highest note": "G5"
+  },
+  {
+    "song": "Lazarus",
+    "artist": "David Bowie",
+    "lowest note": "E4",
+    "highest note": "F5"
+  },
+  {
+    "song": "Tears in Heaven",
+    "artist": "Eric Clapton",
+    "lowest note": "E4",
+    "highest note": "F#5"
+  },
+  {
+    "song": "Nothing Else Matters",
+    "artist": "Metallica",
+    "lowest note": "D4",
+    "highest note": "C5"
+  },
+  {
+    "song": "I Wanna Be Yours",
+    "artist": "Arctic Monkeys",
+    "lowest note": "Bb3",
+    "highest note": "Bb4"
+  },
+  {
+    "song": "Wish You Were Here",
+    "artist": "Pink Floyd",
+    "lowest note": "D4",
+    "highest note": "E5"
+  },
+  {
+    "song": "Way Down We Go",
+    "artist": "Kaleo",
+    "lowest note": "Bb3",
+    "highest note": "F6"
+  },
+  {
+    "song": "A Long December",
+    "artist": "Counting Crows",
+    "lowest note": "D4",
+    "highest note": "D5"
+  },
+  {
+    "song": "Pour It Up",
+    "artist": "Rihanna",
+    "lowest note": "G#3",
+    "highest note": "A4"
+  },
+  {
+    "song": "Green Light",
+    "artist": "Lorde",
+    "lowest note": "D3",
+    "highest note": "G4"
+  },
+  {
+    "song": "Sound and Vision",
+    "artist": "David Bowie",
+    "lowest note": "D3",
+    "highest note": "G4"
+  },
+  {
+    "song": "Rehab",
+    "artist": "Amy Winehouse",
+    "lowest note": "G3",
+    "highest note": "F4"
+  },
+  {
+    "song": "Malibu",
+    "artist": "Miley Cyrus",
+    "lowest note": "Eb3",
+    "highest note": "F4"
+  },
+  {
+    "song": "Don't Be So Shy",
+    "artist": "Imany feat. Filatov and Karas",
+    "lowest note": "E3",
+    "highest note": "E4"
+  }
+]
