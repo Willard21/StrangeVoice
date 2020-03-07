@@ -48,8 +48,12 @@ var server = app.listen(8080, function(){
 app.post("/mmm", function(req, res){
 	if(req.files){
 		console.log("We got the files!!");
-		let audio = req.files.audio;
-		console.log(getPitch(req.files.audio.data));
+		let lowKey = req.files.audio1;
+		let highKey = req.files.audio2;
+		console.log(lowKey);
+		console.log(highKey);
+		console.log("LowKey:" + getPitch(lowKey.data));
+		console.log("highKey:" + getPitch(highKey.data));
 	}
 })
 function generateSongs(){
