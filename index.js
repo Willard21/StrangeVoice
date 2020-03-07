@@ -10,17 +10,8 @@ fs.readFile("song_list.json", (err, data) => {
 	//obj = JSON.parse(data);
 });
 
-function getSongs(lf,hf){
-	var lowf, highf;
-	var songList = new Array();
-	for(i = 0; i < songs.length; i++){
-		lowf = songs[i]["low frequency"];
-		highf = songs[i]["high frequency"];
-		if(lowf >= lf && highf <= hf){
-			songList.push(songs[i]);
-		}
-	}
-	return songList;
+function getSongs(lf, hf){
+	return songs.filter(song => song["lowest frequency"] >= lf && song["highest frequency"] <= hf)
 }
 
 const WavDecoder = require("wav-decoder");

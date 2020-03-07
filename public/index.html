@@ -73,8 +73,8 @@
 						display += "<div class='col-sm-4'> ";
 						display +=	"<h2>" + data.songs[i].song + "</h2>";
 						display +=	"<h3>" + data.songs[i].artist + "</h3>";
-						display +=  "<p> Ln:" + data.song["lowest frequency"];
-						display += 	" Hn:" +  data.song["highest frequency"] +  "</p></div";
+						display +=  "<p> Ln:" + data.songs[i]["lowest frequency"];
+						display += 	" Hn:" +  data.songs[i]["highest frequency"] +  "</p></div";
 					}
 					container.innerHTML = display;
 				}
