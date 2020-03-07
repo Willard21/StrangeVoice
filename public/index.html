@@ -112,8 +112,10 @@
 					}
 				};
 				var fd = new FormData();
-				fd.append("audio_data", blob, filename);
-				xhr.open("GET", "/mmm", true);
+				fd.append("audio", blob, filename);
+				console.log("Data to sent:");
+				console.log(blob);
+				xhr.open("POST", "/mmm", true);
 				xhr.send(fd);
 			})
 			li.appendChild(document.createTextNode(" ")) //add a space in between 
