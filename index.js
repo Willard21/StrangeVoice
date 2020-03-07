@@ -3,6 +3,22 @@ const client = new Discord.Client();
 const config = require("./config.json");
 const commands = new (require("./Commands/handler"))(`${__dirname}/Commands/Commands`)
 const fs = require("fs");
+/*let songs = require("./song_list.json")
+fs.readFile("song_list.json", (err, data) => {
+	if(err) throw err;
+	//var obj;
+	//obj = JSON.parse(data);
+});
+
+function getSongs(lf,hf){
+	for(const element in songs){
+		console.log(songs);
+	};
+}
+
+getSongs(200,500);
+*/
+
 const WavDecoder = require("wav-decoder");
 const Pitchfinder = require("pitchfinder");
 
