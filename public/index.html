@@ -25,27 +25,17 @@
 			  </div>
 			</div>
 			<div class="row">
-				<div id="controls" class="col">
+				<div id="controls" class="col-sm-6">
 					<button id="record" type="button" class="btn btn-light">Record</button>
 				</div>
-				<div id="controls" class="col">
+				<div id="controls" class="col-sm-6">
 					<button id="classify" type="button" class="btn btn-light">Classify Voice</button>
+				</div id="data">
+				<div>
 				</div>
 			  </div>
 		  </div>
-
-		  <div class="row">
-			<div class="col">
-				<h3><font color="White"> Recordings: </font></h3>
-			</div>
-			<div class="col">
-			</div>
-			<div class="col">
-			</div>
 		  </div>
-
-
-		
 		<ol id="recordingsList"></ol>
 
 	</body>
@@ -75,7 +65,17 @@
 			var xhr = new XMLHttpRequest();
 			xhr.onload = function(e) {
 				if (this.readyState === 4) {
-					console.log("Server returned: ", e.target.responseText);
+					let data = JSON.parse(this.responseText);
+					let container = Document.getElementById("data");
+					let display = "";
+					for(let i = 0; i < data.songs.length; i++){
+						display += "<div class='col-sm-4'> ";
+						display +=	"<h2>" + data.songs[i].song + "</h2>";
+						display +=	"<h3>" + data.songs[i].artist + "</h3>";
+						display +=  "<p> Ln:" + data.song["lowest frequency"];
+						display += 	" Hn:" +  data.song["highest frequency"] +  "</p>";
+					}
+					container.innerHTML = display;
 				}
 			};
 			var fd = new FormData();

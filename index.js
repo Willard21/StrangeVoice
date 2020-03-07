@@ -49,6 +49,7 @@ app.post("/mmm", function(req, res){
 		let pitch = getKTP(freqArray);
 		console.log("LowKey:" + pitch[0]);
 		console.log("highKey:" + pitch[1]);
+		console.log(JSON.stringify(getSongs(pitch[0], pitch[1])));
 		let resData = "{'LowKey':" + pitch[0] + ",";
 			resData += "'HighKey':" + pitch[1] + ",";
 			resData += "'songs:'" + JSON.stringify(getSongs(pitch[0], pitch[1])) + "};";
