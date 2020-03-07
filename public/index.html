@@ -7,10 +7,25 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	</head>
 	<style>
-		body{
-			background-color: #343a40;
-		}
+	body{
+            background-color: #343a40;
+        }
+        button{
+            display: block;
+            width: 100%;
+        }
+        .btn{
+            font-weight: 700;
+        }
+
+        .container{
+            margin-top: 10%;
+        }
+		.font h3,h2,p {
+            color: white;
+        }
 	</style>
+
 	<body>
 		<div class="container">
 			<div class="row">
@@ -31,10 +46,9 @@
 				<div id="controls" class="col-sm-6">
 					<button id="classify" type="button" class="btn btn-light">Classify Voice</button>
 				</div>
-				<div id="data">
+			</div>
+				<div id="data" class="row">
 				</div>
-			  </div>
-		  </div>
 		  </div>
 		<ol id="recordingsList"></ol>
 
@@ -70,11 +84,11 @@
 					let container = document.getElementById("data");
 					let display = "";
 					for(let i = 0; i < data.songs.length; i++){
-						display += "<div class='col-sm-4'> ";
+						display += "<div class='col-sm-4 font'> ";
 						display +=	"<h2>" + data.songs[i].song + "</h2>";
 						display +=	"<h3>" + data.songs[i].artist + "</h3>";
 						display +=  "<p> Ln:" + data.songs[i]["lowest frequency"];
-						display += 	" Hn:" +  data.songs[i]["highest frequency"] +  "</p></div";
+						display += 	" Hn:" +  data.songs[i]["highest frequency"] +  "</p></div>";
 					}
 					container.innerHTML = display;
 				}
@@ -153,7 +167,7 @@
 				console.log("Saving: " + currentRecording);
 				if (currentRecording % count) {
 					startRecording()
-				} else gumStream.getAudioTracks()[0].stop();
+				}
 			}
 		}
 
