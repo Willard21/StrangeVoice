@@ -1,0 +1,34 @@
+[
+  {
+    "song": "Natural",
+    "artist": "Imagine Dragons",
+    "lowest note": "A3",
+    "highest note": "C#6",
+    "lowest frequency": "220.00",
+    "highest frequency": "1108.73"
+  },
+  {
+    "song": "Promises",
+    "artist": "Calvin Harris feat. Sam Smith",
+    "lowest note": "D4",
+    "highest note": "B5",
+    "lowest frequency": "293.66",
+    "highest frequency": "987.77"
+  },
+  {
+    "song": "Shotgun",
+    "artist": "George Ezra",
+    "lowest note": "F3",
+    "highest note": "D5",
+    "lowest frequency": "174.61",
+    "highest frequency": "587.33"
+  },
+  {
+    "song": "Be Alright",
+    "artist": "Dean Lewis",
+    "lowest note": "C#4",
+    "highest note": "F#5",
+    "lowest frequency": "277.18",
+    "highest frequency": "739.99"
+  }
+]

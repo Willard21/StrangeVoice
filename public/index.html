@@ -1,16 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-	<meta charset="UTF-8">
-	<title>Simple Recorder.js demo with record, stop and pause</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<div id="controls">
-		<button id="record">Record</button>
-	</div>
-	<div id="controls">
-		<button id="classify">Classify Voice</button>
-	</div>
-	<h3>Recordings</h3>
+	<head>
+		<title>StrangeVoice</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	</head>
+	<style>
+		body{
+			background-color: #343a40;
+		}
+	</style>
+	<body>
+		<div class="container">
+			<div class="row">
+			  <div class="col">
+			  </div>
+			  <div class="col">
+				<nav class="navbar navbar-dark bg-dark">
+					<h1><font color="White"> StrangeVoice </font></h1>
+					</nav>
+			  </div>
+			  <div class="col">
+			  </div>
+			</div>
+			<div class="row">
+				<div id="controls" class="col">
+					<button id="record" type="button" class="btn btn-light">Record</button>
+				</div>
+				<div id="controls" class="col">
+					<button id="classify" type="button" class="btn btn-light">Classify Voice</button>
+				</div>
+			  </div>
+		  </div>
+
+		  <div class="row">
+			<div class="col">
+				<h3><font color="White"> Recordings: </font></h3>
+			</div>
+			<div class="col">
+			</div>
+			<div class="col">
+			</div>
+		  </div>
+
+
+		
+		<ol id="recordingsList"></ol>
+
+	</body>
 	<ol id="recordingsList"></ol>
+
 	<!-- inserting these scripts at the end to be able to use all the elements in the DOM --> 
 	<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
 	<script>
@@ -104,7 +144,9 @@
 				}
 			}
 		}
-		
 
 	</script>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </html>
