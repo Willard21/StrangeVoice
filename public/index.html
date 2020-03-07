@@ -4,10 +4,7 @@
 	<title>Simple Recorder.js demo with record, stop and pause</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<div id="controls">
-		<button id="recordLow">Record Low</button>
-	</div>
-	<div id="controls">
-		<button id="recordHigh">Record High</button>
+		<button id="record">Record</button>
 	</div>
 	<div id="controls">
 		<button id="classify">Classify Voice</button>
@@ -26,16 +23,14 @@
 		//Recorder.js object 
 		var input;
 		var currentRecording = -1;
-		var count = 30;
+		var count = 60;
 
-		var recordLow = document.getElementById("recordLow");
-		var recordHigh = document.getElementById("recordHigh");
+		var record = document.getElementById("record");
 		var classify = document.getElementById("classify");
 
 		
 		//add events to those 3 buttons 
-		recordLow.addEventListener("click", recordLowPitch);
-		recordHigh.addEventListener("click", recordHighPitch);
+		record.addEventListener("click", recordPitch);
 		classify.addEventListener("click", function(event) {
 			var xhr = new XMLHttpRequest();
 			xhr.onload = function(e) {
@@ -44,19 +39,14 @@
 				}
 			};
 			var fd = new FormData();
-			audios.forEach((audio, i) => fd.append(`audio${i + 1}`, audio, i < count ? "lowKey" : "highKey"))
+			audios.forEach((audio, i) => fd.append(`audio${i + 1}`, audio, "pitch"))
 			console.log("Data to sent:");
 			xhr.open("POST", "/mmm", true);
 			xhr.send(fd);
 		});
 
-		function recordLowPitch() {
+		function recordPitch() {
 			currentRecording = 0;
-			startRecording();
-		}
-		
-		function recordHighPitch() {
-			currentRecording = count;
 			startRecording();
 		}
 		
@@ -118,5 +108,3 @@
 
 	</script>
 </html>
-
-Object.values({a: "value"}) // returns ["value"]

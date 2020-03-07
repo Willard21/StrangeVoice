@@ -48,21 +48,35 @@ var server = app.listen(8080, function(){
 app.post("/mmm", function(req, res){
 	if(req.files){
 		console.log("We got the files!!");
-		let values = Object.values(req.files);
-		let lowKey = values.slice(0, 30);
-		let highKey = values.slice(30, 60);
-		console.log("LowKey:" + getKTP(lowKey));
-		console.log("highKey:" + getKTP(highKey));
+		let freqArray = Object.values(req.files);
+		let pitch = getKTP(freqArray);
+		console.log("LowKey:" + pitch[0]);
+		console.log("highKey:" + pitch[1]);
+		res.send("{'LowKey':" + pitch[0] + ","\
+				   "'HighKey':" + pitch[1] + ","\
+				   "'songs:'");
 	}
 })
 
-function getKTP(keyArray){
+function getKTP(freqArray){
+	let lowPitch = 20000;
+	let highPitch = null;
 	let pitchVal = null;
-	for(i = 0; i < keyArray.length; i++){
-		pitchVal = getPitch(keyArray[i].data);
-		if(pitchVal != null) return pitchVal;
+	let total = 0;
+	let countCorrect = 0;
+	for(i = 0; i < freqArray.length; i++){
+		pitchVal = getPitch(freqArray[i].data);
+		if(pitchVal != null){
+			console.log("   Pitch: " + pitchVal); 
+			if(pitchVal > highPitch){
+				highPitch = pitchVal;
+			}
+			if(pitchVal < lowPitch){
+				lowPitch = pitchVal;
+			}
+		}
 	}
-	return null;
+	return [lowPitch, highPitch];
 }
 function generateSongs(){
 	let lowTone = getPitch(/* File location */);
