@@ -22,9 +22,23 @@ getSongs(200,500);
 const WavDecoder = require("wav-decoder");
 const Pitchfinder = require("pitchfinder");
 
+function getPitch(filePath){
+	const detectPitch = new Pitchfinder.DynamicWavelet();
+	const buffer = fs.readFileSync(filePath); //Conversion from pcm to wav required
+	const decoded = WavDecoder.decode.sync(buffer);
+	const float32Array = decoded.channelData[0];
+	console.log("Detection Process");
+	return detectPitch(float32Array);
+}
+
+// Testing pitch acquisition
+console.log("Classifying audio");
+console.log(getPitch("440Hz_44100Hz_16bit_05sec.wav"));
+
 client.on("ready", async () => {
 	console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`)
-	client.user.setActivity(`Serving ${client.guilds.size} servers`)
+	client.user.setActivity(`with your emotions`)
+	if (!fs.existsSync("./recordings/")) fs.mkdirSync("./recordings/")
 
 	await commands.loadCommands()
 	client.commands = commands
@@ -58,6 +72,6 @@ client.on("message", async message => {
 
 	//Execute the command
 	const cmd = client.commands.resolveCommand(command)
-	cmd.Execute(message, args).catch(error => message.sendError(error))
+	cmd.Execute(message, args).catch(console.error)
 });
 client.login(config.token);
