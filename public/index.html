@@ -26,6 +26,7 @@
 		//Recorder.js object 
 		var input;
 		var currentRecording = -1;
+		var count = 30;
 
 		var recordLow = document.getElementById("recordLow");
 		var recordHigh = document.getElementById("recordHigh");
@@ -43,12 +44,7 @@
 				}
 			};
 			var fd = new FormData();
-			fd.append("audio1", audios[0], "lowKey");
-			fd.append("audio2", audios[1], "lowKey");
-			fd.append("audio3", audios[2], "lowKey");
-			fd.append("audio4", audios[3], "highKey");
-			fd.append("audio5", audios[4], "highKey");
-			fd.append("audio6", audios[5], "highKey");
+			audios.forEach((audio, i) => fd.append(`audio${i + 1}`, audio, i < count ? "lowKey" : "highKey"))
 			console.log("Data to sent:");
 			xhr.open("POST", "/mmm", true);
 			xhr.send(fd);
@@ -60,7 +56,7 @@
 		}
 		
 		function recordHighPitch() {
-			currentRecording = 3;
+			currentRecording = count;
 			startRecording();
 		}
 		
@@ -89,7 +85,7 @@
 				//start the recording process 
 				rec.record()
 				console.log("Recording started");
-				window.setTimeout(stopRecording, 1000, rec);
+				window.setTimeout(stopRecording, 100, rec);
 			}).catch(function(err) {
 				console.log(err)
 			});
@@ -113,7 +109,7 @@
 			if(currentRecording != -1){
 				audios[currentRecording++] = blob;
 				console.log("Saving: " + currentRecording);
-				if (currentRecording % 3) {
+				if (currentRecording % count) {
 					startRecording()
 				}
 			}
@@ -122,3 +118,5 @@
 
 	</script>
 </html>
+
+Object.values({a: "value"}) // returns ["value"]
