@@ -6,6 +6,19 @@ const fs = require("fs");
 const WavDecoder = require("wav-decoder");
 const Pitchfinder = require("pitchfinder");
 
+function getPitch(filePath){
+	const detectPitch = new Pitchfinder.DynamicWavelet();
+	const buffer = fs.readFileSync(filePath); //Conversion from pcm to wav required
+	const decoded = WavDecoder.decode.sync(buffer);
+	const float32Array = decoded.channelData[0];
+	console.log("Detection Process");
+	return detectPitch(float32Array);
+}
+
+// Testing pitch acquisition
+console.log("Classifying audio");
+console.log(getPitch("440Hz_44100Hz_16bit_05sec.wav"));
+
 client.on("ready", async () => {
 	console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`)
 	client.user.setActivity(`Serving ${client.guilds.size} servers`)
