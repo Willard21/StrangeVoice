@@ -48,8 +48,9 @@ var server = app.listen(8080, function(){
 app.post("/mmm", function(req, res){
 	if(req.files){
 		console.log("We got the files!!");
-		let lowKey = [req.files.audio1, req.files.audio2, req.files.audio3];
-		let highKey = [req.files.audio4, req.files.audio5, req.files.audio6];
+		let values = Object.values(req.files);
+		let lowKey = values.slice(0, 30);
+		let highKey = values.slice(30, 60);
 		console.log("LowKey:" + getKTP(lowKey));
 		console.log("highKey:" + getKTP(highKey));
 	}
