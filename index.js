@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 console.log("Creating a server");
 
-var server = app.listen(8080, function(){
+var server = app.listen(process.env.PORT, function(){
     var port = server.address().port;
     console.log("Server started at http://localhost:%s", port);
 });
