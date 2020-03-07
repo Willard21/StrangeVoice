@@ -30,8 +30,8 @@
 				</div>
 				<div id="controls" class="col-sm-6">
 					<button id="classify" type="button" class="btn btn-light">Classify Voice</button>
-				</div id="data">
-				<div>
+				</div>
+				<div id="data">
 				</div>
 			  </div>
 		  </div>
@@ -66,7 +66,7 @@
 			xhr.onload = function(e) {
 				if (this.readyState === 4) {
 					let data = JSON.parse(this.responseText);
-					let container = Document.getElementById("data");
+					let container = document.getElementById("data");
 					let display = "";
 					for(let i = 0; i < data.songs.length; i++){
 						display += "<div class='col-sm-4'> ";
