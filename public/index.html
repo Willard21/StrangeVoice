@@ -54,7 +54,7 @@
 	<!-- inserting these scripts at the end to be able to use all the elements in the DOM --> 
 	<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
 	<script>
-		//webkitURL is deprecated but nevertheless 
+		//webkitURL is deprecated but nevertheless
 		URL = window.URL || window.webkitURL;
 		var gumStream;
 		//stream from getUserMedia() 
@@ -91,6 +91,17 @@
 		}
 		
 		function startRecording(){
+
+			if (rec) {
+				rec = new Recorder(input, {
+					numChannels: 1
+				})
+				rec.record()
+				console.log("Recording started");
+				window.setTimeout(stopRecording, 100, rec);
+				return
+			}
+
 			//MediaStreamAudioSourceNode we'll be recording 
 			// shim for AudioContext when it's not avb. 
 			var AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -111,7 +122,7 @@
 				/* Create the Recorder object and configure to record mono sound (1 channel) Recording 2 channels will double the file size */
 				rec = new Recorder(input, {
 					numChannels: 1
-				}) 
+				})
 				//start the recording process 
 				rec.record()
 				console.log("Recording started");
@@ -147,6 +158,6 @@
 
 	</script>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </html>
