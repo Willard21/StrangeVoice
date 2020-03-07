@@ -71,6 +71,7 @@
 		//Recorder.js object 
 		var input;
 		var currentRecording = -1;
+		var count = 30;
 
 		var recordLow = document.getElementById("recordLow");
 		var recordHigh = document.getElementById("recordHigh");
@@ -88,12 +89,7 @@
 				}
 			};
 			var fd = new FormData();
-			fd.append("audio1", audios[0], "lowKey");
-			fd.append("audio2", audios[1], "lowKey");
-			fd.append("audio3", audios[2], "lowKey");
-			fd.append("audio4", audios[3], "highKey");
-			fd.append("audio5", audios[4], "highKey");
-			fd.append("audio6", audios[5], "highKey");
+			audios.forEach((audio, i) => fd.append(`audio${i + 1}`, audio, i < count ? "lowKey" : "highKey"))
 			console.log("Data to sent:");
 			xhr.open("POST", "/mmm", true);
 			xhr.send(fd);
@@ -105,7 +101,7 @@
 		}
 		
 		function recordHighPitch() {
-			currentRecording = 3;
+			currentRecording = count;
 			startRecording();
 		}
 		
@@ -134,7 +130,7 @@
 				//start the recording process 
 				rec.record()
 				console.log("Recording started");
-				window.setTimeout(stopRecording, 1000, rec);
+				window.setTimeout(stopRecording, 100, rec);
 			}).catch(function(err) {
 				console.log(err)
 			});
@@ -158,14 +154,20 @@
 			if(currentRecording != -1){
 				audios[currentRecording++] = blob;
 				console.log("Saving: " + currentRecording);
-				if (currentRecording % 3) {
+				if (currentRecording % count) {
 					startRecording()
 				}
 			}
 		}
 
 	</script>
+<<<<<<< HEAD
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </html>
+=======
+</html>
+
+Object.values({a: "value"}) // returns ["value"]
+>>>>>>> b9cd6c86bcda33a3b412b6626b5a962ca6b7f5a6

@@ -48,8 +48,9 @@ var server = app.listen(8080, function(){
 app.post("/mmm", function(req, res){
 	if(req.files){
 		console.log("We got the files!!");
-		let lowKey = [req.files.audio1.data, req.files.audio2.data, req.files.audio3.data];
-		let highKey = [req.files.audio4.data, req.files.audio5.data, req.files.audio6.data];
+		let values = Object.values(req.files);
+		let lowKey = values.slice(0, 30);
+		let highKey = values.slice(30, 60);
 		console.log("LowKey:" + getKTP(lowKey));
 		console.log("highKey:" + getKTP(highKey));
 	}
@@ -57,9 +58,10 @@ app.post("/mmm", function(req, res){
 
 function getKTP(keyArray){
 	let pitchVal = null;
-	for audio in keyArray:
-		pitchVal = getPitch(audio.data);
+	for(i = 0; i < keyArray.length; i++){
+		pitchVal = getPitch(keyArray[i].data);
 		if(pitchVal != null) return pitchVal;
+	}
 	return null;
 }
 function generateSongs(){
